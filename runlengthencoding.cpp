@@ -8,7 +8,7 @@ std::string decode(std::string);
 int main(){
 
     std::cout << encode("aaabbccccccccccddddddefg") << std::endl;
-    
+    //test
 
 }
 
