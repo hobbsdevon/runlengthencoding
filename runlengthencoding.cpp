@@ -1,13 +1,18 @@
 #include <iostream>
 #include <string>
+#include <typeinfo>
 
 std::string encode(std::string);
 std::string decode(std::string);
 
 
 int main(){
-
-    std::cout << encode("aaabbccccccccccddddddefg") << std::endl;
+    std::string testString = "aabbccdd";
+    std::cout << "Test String: " << testString << std::endl;
+    std::string encoded = encode(testString);
+    std::cout << "encoded: " << encoded << std::endl;
+    std::string decoded = decode(encoded);
+    std::cout << "decoded: " << decoded << std::endl;
     //test
 
 }
@@ -34,6 +39,18 @@ std::string encode(std::string input){
 
 std::string decode(std::string encoded){
     std::string decoded;
+    int i = 0;
+    while(i < encoded.length()){
+        char currentChar = encoded[i];
+        int currentNum = int(encoded[i+1]-48);
+        //std::cout << currentNum << std::endl;
+        //std::cout << typeid(currentNum).name() << std::endl;
+        for(int j = 0; j < currentNum; j++){
+            decoded += currentChar;
+        }
+        i += 2;
+        //i += (currentNum/10) + 1;
+    }
 
     return decoded;
 }
